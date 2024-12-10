@@ -1,11 +1,13 @@
 <p align="center">
-Generate (seeded) chance fixtures based on <a href="https://github.com/SacDeNoeuds/unhoax">unhoax</a> schemas
+  <img alt="Package Size" src="https://badgen.net/bundlephobia/minzip/unhoax-chance">
+  <span>·</span>
+  <img alt="Total coverage" src="https://github.com/SacDeNoeuds/unhoax-chance/tree/main/badges/coverage-total.svg">
+  <span>·</span>
+  <img alt="Dependency Count" src="https://badgen.net/bundlephobia/dependency-count/unhoax-chance">
 </p>
 
 <p align="center">
-  <img alt="Package Size" src="https://deno.bundlejs.com/badge?q=unhoax-chance&treeshake=[*]">
-  <span>·</span>
-  <img alt="Total coverage" src="./badges/coverage-total.svg">
+Generate (seeded) chance fixtures based on <a href="https://github.com/SacDeNoeuds/unhoax">unhoax</a> schemas
 </p>
 
 <p align="center">
