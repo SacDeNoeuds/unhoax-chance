@@ -48,7 +48,7 @@
   "bugs": {
     "url": "https://github.com/SacDeNoeuds/unhoax-chance/issues"
   },
-  "homepage": "https://github.com/SacDeNoeuds/unhoax-chance#readme",
+  "homepage": "https://sacdenoeuds.github.io/unhoax-chance/",
   "devDependencies": {
     "@fast-check/vitest": "^0.1.4",
     "@rollup/plugin-node-resolve": "^15.3.0",
