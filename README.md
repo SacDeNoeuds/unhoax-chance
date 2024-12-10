@@ -1,8 +1,6 @@
 <p align="center">
   <img alt="Package Size" src="https://badgen.net/bundlephobia/minzip/unhoax-chance">
-  <span>·</span>
-  <img alt="Total coverage" src="https://github.com/SacDeNoeuds/unhoax-chance/tree/main/badges/coverage-total.svg">
-  <span>·</span>
+  <img alt="Total coverage" src="https://raw.githubusercontent.com/SacDeNoeuds/unhoax-chance/refs/heads/main/badges/coverage-total.svg">
   <img alt="Dependency Count" src="https://badgen.net/bundlephobia/dependency-count/unhoax-chance">
 </p>
 
