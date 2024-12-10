@@ -58,7 +58,6 @@
     "@types/node": "^22.10.1",
     "@vitest/coverage-istanbul": "^2.1.8",
     "fast-check": "^3.23.1",
-    "just-omit": "^2.2.0",
     "just-pipe": "^1.0.0",
     "prettier": "^3.4.2",
     "rollup": "^4.28.1",
