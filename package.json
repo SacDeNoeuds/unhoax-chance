@@ -1,0 +1,76 @@
+{
+  "name": "unhoax-chance",
+  "version": "0.0.0",
+  "description": "Generate seeded Chance fixtures based on unhoax schemas",
+  "main": "./lib/cjs/main.js",
+  "module": "./lib/esm/main.js",
+  "type": "module",
+  "files": [
+    "./lib",
+    "./README.md"
+  ],
+  "exports": {
+    ".": {
+      "import": "./lib/esm/main.js",
+      "require": "./lib/cjs/main.js",
+      "node": "./lib/cjs/main.js",
+      "types": "./lib/esm/main.d.ts"
+    }
+  },
+  "scripts": {
+    "prebuild": "npm run check-ts && rm -rf ./lib",
+    "build": "rollup -c ./rollup.config.js",
+    "check-ts": "tsc --noEmit -P ./tsconfig.build.json",
+    "coverage": "vitest --coverage",
+    "doc": "typedoc",
+    "prepack": "npm run build",
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SacDeNoeuds/unhoax-chance.git"
+  },
+  "keywords": [
+    "unhoax",
+    "chance",
+    "chancejs",
+    "fixture",
+    "fixtures",
+    "mock",
+    "mocks",
+    "seed",
+    "seeded",
+    "fake",
+    "faker"
+  ],
+  "author": "SacDeNoeuds <sacdenoeuds.dev@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SacDeNoeuds/unhoax-chance/issues"
+  },
+  "homepage": "https://github.com/SacDeNoeuds/unhoax-chance#readme",
+  "devDependencies": {
+    "@fast-check/vitest": "^0.1.4",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.1",
+    "@types/chance": "^1.1.6",
+    "@types/node": "^22.10.1",
+    "@vitest/coverage-istanbul": "^2.1.8",
+    "fast-check": "^3.23.1",
+    "just-omit": "^2.2.0",
+    "just-pipe": "^1.0.0",
+    "prettier": "^3.4.2",
+    "rollup": "^4.28.1",
+    "tslib": "^2.8.1",
+    "tsx": "^4.19.2",
+    "typedoc": "^0.27.4",
+    "typedoc-unhoax-theme": "^0.4.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "peerDependencies": {
+    "chance": "^1.1.12",
+    "unhoax": "^0.6.2"
+  }
+}
