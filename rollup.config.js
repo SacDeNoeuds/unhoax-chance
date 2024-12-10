@@ -19,8 +19,8 @@ const config = (format) => ({
     resolve(),
     typescript({
       project: './tsconfig.build.json',
-      baseUrl: './src',
-      exclude: ['**/*.spec.ts', 'src/internal/test.ts'],
+      rootDir: './src',
+      exclude: ['**/*.spec.ts', 'internal/test.ts'],
       declaration: true,
       declarationDir: folders[format],
       sourceMap: true,
