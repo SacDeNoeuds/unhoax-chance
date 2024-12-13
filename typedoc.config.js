@@ -17,6 +17,9 @@ const config = {
     excludeReferences: true,
     includeGroups: false,
   },
+  navigationLinks: {
+    GitHub: 'https://github.com/SacDeNoeuds/unhoax-chance',
+  },
   visibilityFilters: {},
   defaultCategory: 'Default Category',
   cleanOutputDir: true,
