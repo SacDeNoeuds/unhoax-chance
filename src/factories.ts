@@ -56,7 +56,7 @@ const builtInFactories = {
  * type Email = string & { _tag: 'email' }
  * declare const isEmail: (input: unknown) => input is Email
  *
- * const emailSchema = x.fromPredicate(
+ * const emailSchema = x.fromGuard(
  *   'Email', // This name will be used for factories.
  *   isEmail,
  * )

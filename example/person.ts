@@ -1,5 +1,5 @@
 import pipe from 'just-pipe'
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 import { createFixtureFactory } from '../src/main'
 
 type Branded<A, Tag> = A & { _tag: Tag }
@@ -11,11 +11,7 @@ type PersonId = Branded<string, 'PersonId'>
 type PersonName = Branded<string, 'PersonName'>
 type PersonAge = Branded<number, 'PersonAge'>
 
-type Person = {
-  id: PersonId
-  name: PersonName
-  age: PersonAge
-}
+type Person = { id: PersonId; name: PersonName; age: PersonAge }
 
 const PersonName = pipe(
   x.string,

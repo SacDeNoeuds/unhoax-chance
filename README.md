@@ -28,9 +28,9 @@ npm i -D unhoax-chance
 
 ```ts
 import { createFixtureFactory } from 'unhoax-chance'
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 
-const mySchema = x.…
+const mySchema = x.object(…)
 const createRandomX = createFixtureFactory(mySchema)
 const createRandomX: (seed?: number) => X
 

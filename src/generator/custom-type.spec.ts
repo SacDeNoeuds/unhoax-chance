@@ -1,4 +1,4 @@
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 import { describe, expect, it } from 'vitest'
 import { createFixtureFactory } from '../FixtureFactory'
 import { factories } from '../factories'
@@ -7,14 +7,9 @@ import { testThatSchemaGenerates } from '../internal/test'
 type Email = string & { _tag: 'Email' }
 const isEmail = (input: unknown): input is Email =>
   typeof input === 'string' && input.includes('@')
-const emailSchema = x.fromPredicate('Email', isEmail)
+const emailSchema = x.fromGuard('Email', isEmail)
 
-type Person = {
-  _tag: 'Person'
-  email: Email
-  name: string
-  age: number
-}
+type Person = { _tag: 'Person'; email: Email; name: string; age: number }
 const personSchema = x.object<Person>('Person', {
   _tag: x.literal('Person'),
   email: emailSchema,
@@ -36,7 +31,7 @@ describe('unregistered type – Email', () => {
 })
 
 describe('registered type – GlobalEmail', () => {
-  const globalEmailSchema = x.fromPredicate('GlobalEmail', isEmail)
+  const globalEmailSchema = x.fromGuard('GlobalEmail', isEmail)
   factories.GlobalEmail = (chance) => chance.email()
   testThatSchemaGenerates('a global email', globalEmailSchema)
 })

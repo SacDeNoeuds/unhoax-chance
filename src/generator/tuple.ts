@@ -1,4 +1,4 @@
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 import type { FixtureFactory } from '../FixtureFactory'
 import type { GenerateFixtureFromSchema } from '../internal/GenerateFixtureFromSchema'
 

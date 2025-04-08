@@ -1,4 +1,4 @@
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 
 export const findInRefinements =
   (key: string) =>

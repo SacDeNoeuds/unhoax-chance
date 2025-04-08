@@ -1,4 +1,4 @@
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 import { defaults } from '../defaults'
 import type { FixtureFactory } from '../FixtureFactory'
 import { max, min } from '../internal/find-in-refinements'

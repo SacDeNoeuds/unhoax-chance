@@ -1,5 +1,5 @@
 import { Chance } from 'chance'
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 import { factories } from './factories'
 import type { GenerateFixtureFromSchema } from './internal/GenerateFixtureFromSchema'
 
@@ -19,7 +19,7 @@ export type Overrides<T> =
  * @category Fixture Factory
  * @example From object schema
  * ```ts
- * import * as x from 'unhoax'
+ * import { x } from 'unhoax'
  * import { createFixtureFactory } from 'unhoax-chance'
  *
  * const userSchema = x.object({ id: x.string, … })
@@ -38,7 +38,7 @@ export type Overrides<T> =
  *
  * @example From array/Set/Map schema
  * ```ts
- * import * as x from 'unhoax'
+ * import { x } from 'unhoax'
  * import { createFixtureFactory } from 'unhoax-chance'
  *
  * const users = x.array(userSchema)
@@ -50,7 +50,7 @@ export type Overrides<T> =
  * <br>
  * @example From Primitive
  * ```ts
- * import * as x from 'unhoax'
+ * import { x } from 'unhoax'
  * import { createFixtureFactory } from 'unhoax-chance'
  *
  * const createRandomString = createFixtureFactory(x.string)

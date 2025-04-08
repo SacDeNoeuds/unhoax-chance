@@ -1,5 +1,5 @@
 import pipe from 'just-pipe'
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 import { testThatSchemaGenerates } from '../internal/test'
 
 testThatSchemaGenerates('Set<string>', x.Set(x.string))

@@ -1,4 +1,4 @@
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 
 /** @internal */
 export type GenerateFixtureFromSchema<T> = (

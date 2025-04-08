@@ -1,6 +1,6 @@
 import { fc, test } from '@fast-check/vitest'
 import { Chance } from 'chance'
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 import { expect } from 'vitest'
 import { createFixtureFactory, type Overrides } from '../main'
 

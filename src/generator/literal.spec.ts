@@ -1,5 +1,5 @@
 import { Chance } from 'chance'
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 import { expect, it } from 'vitest'
 import { testThatSchemaGenerates } from '../internal/test'
 import { generateLiteral } from './literal'
