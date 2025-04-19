@@ -11,7 +11,6 @@
   ],
   "exports": {
     ".": {
-      "node": "./lib/cjs/main.js",
       "types": "./lib/esm/main.d.ts",
       "import": "./lib/esm/main.js",
       "require": "./lib/cjs/main.js"
@@ -70,6 +69,6 @@
   },
   "peerDependencies": {
     "chance": "^1.1.12",
-    "unhoax": ">=0.7.0"
+    "unhoax": "^0.8.1"
   }
 }
