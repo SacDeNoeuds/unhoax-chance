@@ -9,6 +9,8 @@ export type FixtureFactory = typeof createFixtureFactory
 /** @category Fixture Factory */
 export type GenerateFixture<T> = (seedOrChance?: number | Chance.Chance) => T
 
+const cache = new WeakMap<x.Schema<unknown>, GenerateFixture<unknown>>()
+
 /** @category Fixture Factory */
 export type Overrides<T> =
   T extends Record<PropertyKey, unknown>
@@ -68,7 +70,9 @@ export function createFixtureFactory<T>(
   schema: x.Schema<T>,
   overrides?: Overrides<T>,
 ): GenerateFixture<T> {
-  return (seedOrChance) => {
+  const cached = cache.get(schema)
+  if (cached) return cached as GenerateFixture<T>
+  const generateFixture: GenerateFixture<T> = (seedOrChance) => {
     const chance =
       seedOrChance instanceof Chance
         ? seedOrChance
@@ -101,6 +105,8 @@ export function createFixtureFactory<T>(
       ),
     }
   }
+  cache.set(schema, generateFixture)
+  return generateFixture
 }
 
 function getSchemaName(
