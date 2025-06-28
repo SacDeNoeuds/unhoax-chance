@@ -8,7 +8,7 @@ const seeded = <T>(fn: (seed: number) => T) => fc.noShrink(fc.integer()).map(fn)
 
 export const testThatSchemaGenerates = <T>(
   testName: string,
-  schema: x.Schema<T>,
+  schema: x.BaseSchema<T>,
   overrides?: Overrides<T>,
 ) => {
   const generateFixture = createFixtureFactory(schema, overrides)

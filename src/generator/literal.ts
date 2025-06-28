@@ -4,7 +4,7 @@ export const generateLiteral: GenerateFixtureFromSchema<unknown> = (
   chance,
   schema,
 ) => {
-  const literals = 'literals' in schema ? (schema.literals as unknown[]) : []
+  const literals = schema.meta!.literal.literals as any[]
   if (literals.length === 0)
     throw new Error(`no literal to generate (empty list)`)
 

@@ -2,7 +2,6 @@ import { defaults } from '../defaults'
 import { max, min } from '../internal/find-in-refinements'
 import type { GenerateFixtureFromSchema } from '../internal/GenerateFixtureFromSchema'
 
-const add = (target: number | undefined, n: number) => target && target + n
 const isDefined = Boolean as unknown as <T>(value: T | undefined) => value is T
 
 export const generateDate: GenerateFixtureFromSchema<Date> = (
@@ -10,15 +9,11 @@ export const generateDate: GenerateFixtureFromSchema<Date> = (
   schema,
 ) => {
   const safeMin = Math.max(
-    ...[defaults.minDateValue, add(min(schema)?.valueOf(), 1)].filter(
-      isDefined,
-    ),
+    ...[defaults.minDateValue, min(schema)].filter(isDefined),
   )
 
   const safeMax = Math.min(
-    ...[defaults.maxDateValue, add(max(schema)?.valueOf(), -1)].filter(
-      isDefined,
-    ),
+    ...[defaults.maxDateValue, max(schema)].filter(isDefined),
   )
   const int = chance.integer({
     min: safeMin,

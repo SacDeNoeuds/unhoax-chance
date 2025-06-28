@@ -10,7 +10,6 @@ import { generateObject } from './generator/object'
 import { generateRecord } from './generator/record'
 import { generateSet } from './generator/Set'
 import { generateString } from './generator/string'
-import { generateSymbol } from './generator/symbol'
 import { generateTuple } from './generator/tuple'
 import { generateUnion } from './generator/union'
 import type { GenerateFixtureFromSchema } from './internal/GenerateFixtureFromSchema'
@@ -18,7 +17,7 @@ import type { GenerateFixtureFromSchema } from './internal/GenerateFixtureFromSc
 const builtInFactories = {
   boolean: generateBool,
   bigint: generateBigInt,
-  Date: generateDate,
+  date: generateDate,
   integer: generateInteger,
   number: generateFloat,
   string: generateString,
@@ -26,7 +25,6 @@ const builtInFactories = {
   unsafeNumber: generateFloat,
   untrimmedString: generateString,
   literal: generateLiteral,
-  symbol: generateSymbol,
 
   // composites
   array: generateArray(() => createFixtureFactory),

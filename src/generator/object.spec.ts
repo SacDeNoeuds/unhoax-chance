@@ -1,5 +1,4 @@
 import { fc, test } from '@fast-check/vitest'
-import pipe from 'just-pipe'
 import { x } from 'unhoax'
 import { describe, expect } from 'vitest'
 import { createFixtureFactory } from '../FixtureFactory'
@@ -13,8 +12,8 @@ testThatSchemaGenerates(
 testThatSchemaGenerates(
   'an object respecting nested constraints',
   x.object({
-    foo: pipe(x.integer, x.between(2, 10)),
-    bar: pipe(x.string, x.size({ max: 4 })),
+    foo: x.integer.min(2).max(10),
+    bar: x.string.size({ max: 4 }),
   }),
 )
 
@@ -26,7 +25,7 @@ describe('object keeps overrides', () => {
     id: () => fixedId,
   })
   describe('when nested in an array', () => {
-    const schema = pipe(itemSchema, x.array, x.size({ min: 1, max: 1 }))
+    const schema = x.array(itemSchema).size({ min: 1, max: 1 })
     const createFixture = createFixtureFactory(schema)
 
     test.prop([fc.noShrink(fc.integer()).map(createFixture)])(
@@ -50,7 +49,7 @@ describe('object keeps overrides', () => {
   })
 
   describe('when nested in a Set', () => {
-    const schema = pipe(itemSchema, x.Set, x.size({ min: 1, max: 1 }))
+    const schema = x.setOf(itemSchema).size({ min: 1, max: 1 })
     const createFixture = createFixtureFactory(schema)
 
     test.prop([fc.noShrink(fc.integer()).map(createFixture)])(
@@ -62,7 +61,7 @@ describe('object keeps overrides', () => {
   })
 
   describe('when nested in a Map', () => {
-    const schema = pipe(x.Map(x.string, itemSchema), x.size({ min: 1, max: 1 }))
+    const schema = x.mapOf(x.string, itemSchema).size({ min: 1, max: 1 })
     const createFixture = createFixtureFactory(schema)
 
     test.prop([fc.noShrink(fc.integer()).map(createFixture)])(

@@ -1,4 +1,3 @@
-import pipe from 'just-pipe'
 import { x } from 'unhoax'
 import { testThatSchemaGenerates } from '../internal/test'
 
@@ -9,8 +8,7 @@ testThatSchemaGenerates(
 
 testThatSchemaGenerates(
   'a non-empty Record<string, number>',
-  pipe(
-    x.record(x.string, x.number),
-    x.refine('NonEmpty', (record) => Object.keys(record).length > 0),
-  ),
+  x
+    .record(x.string, x.number)
+    .refine('NonEmpty', (record) => Object.keys(record).length > 0),
 )

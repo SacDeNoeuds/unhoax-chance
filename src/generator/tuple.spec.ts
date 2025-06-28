@@ -8,7 +8,7 @@ testThatSchemaGenerates(
     x.number,
     x.object({ name: x.string }),
     x.array(x.boolean),
-    x.Map(x.string, x.number),
-    x.Set(x.integer),
+    x.mapOf(x.string, x.number),
+    x.setOf(x.integer),
   ),
 )

@@ -9,7 +9,7 @@ export type FixtureFactory = typeof createFixtureFactory
 /** @category Fixture Factory */
 export type GenerateFixture<T> = (seedOrChance?: number | Chance.Chance) => T
 
-const cache = new WeakMap<x.Schema<unknown>, GenerateFixture<unknown>>()
+const cache = new WeakMap<x.BaseSchema<any>, GenerateFixture<unknown>>()
 
 /** @category Fixture Factory */
 export type Overrides<T> =
@@ -44,8 +44,8 @@ export type Overrides<T> =
  * import { createFixtureFactory } from 'unhoax-chance'
  *
  * const users = x.array(userSchema)
- * const users = x.Map(x.string, userSchema) // Map<id, user>
- * const users = x.Set(userSchema)
+ * const users = x.mapOf(x.string, userSchema) // Map<id, user>
+ * const users = x.setOf(userSchema)
  *
  * const createRandomUsers = createFixtureFactory(userSchema)
  * ```
@@ -67,7 +67,7 @@ export type Overrides<T> =
  * ```
  */
 export function createFixtureFactory<T>(
-  schema: x.Schema<T>,
+  schema: x.BaseSchema<T>,
   overrides?: Overrides<T>,
 ): GenerateFixture<T> {
   const cached = cache.get(schema)
@@ -90,13 +90,13 @@ export function createFixtureFactory<T>(
       )
     if (!overrides) return make(chance, schema)
 
-    const { props } = schema as x.ObjectSchema<any>
+    const { props } = schema as unknown as x.ObjectSchema<any>
     const customKeys = Object.keys(overrides)
     const trimmedProps = Object.fromEntries(
       Object.entries(props).filter(([key]) => !customKeys.includes(key)),
     )
     return {
-      ...make(chance, x.object(trimmedProps)),
+      ...make(chance, x.object(trimmedProps as any)),
       ...Object.fromEntries(
         Object.entries(overrides).map(([key, generator]) => [
           key,
@@ -110,15 +110,16 @@ export function createFixtureFactory<T>(
 }
 
 function getSchemaName(
-  schema: x.Schema<unknown>,
+  schema: x.BaseSchema<any>,
 ): keyof typeof factories | undefined {
   if (schema.name in factories) return schema.name as keyof typeof factories
-  if ('item' in schema) return schema.name.startsWith('Set') ? 'Set' : 'array'
+  if (schema.name.startsWith('Map<')) return 'Map'
+  if (schema.name.startsWith('Set<')) return 'Set'
+  if (schema.name.startsWith('Array<')) return 'array'
   if ('props' in schema) return 'object'
-  if ('schemas' in schema) return 'union'
-  if ('literals' in schema) return 'literal'
-  if ('key' in schema && 'value' in schema)
-    return schema.name.startsWith('Record') ? 'record' : 'Map'
+  if (schema.meta?.union) return 'union'
+  if (schema.meta?.literal) return 'literal'
+  if (schema.name.startsWith('Record<')) return 'record'
   if ('items' in schema) return 'tuple'
   return undefined
 }

@@ -7,11 +7,9 @@ export const generateBigInt: GenerateFixtureFromSchema<bigint> = (
   chance,
   schema,
 ) => {
-  const safeMin = Math.max(0, add(min(schema), 1) ?? 0)
-  const maxInt = max(schema)
   const int = chance.integer({
-    min: Math.max(0, add(min(schema), 1) ?? 0),
-    max: maxInt && Math.max(safeMin, maxInt - 1),
+    min: min(schema),
+    max: max(schema),
   })
   return BigInt(int)
 }

@@ -1,4 +1,3 @@
-import pipe from 'just-pipe'
 import { x } from 'unhoax'
 import { createFixtureFactory } from '../src/main'
 
@@ -13,24 +12,18 @@ type PersonAge = Branded<number, 'PersonAge'>
 
 type Person = { id: PersonId; name: PersonName; age: PersonAge }
 
-const PersonName = pipe(
-  x.string,
-  x.size({ min: 3, max: 50 }),
-  x.map(castAs<string, PersonName>),
-)
+const PersonName = x.string
+  .size({ min: 3, max: 50 })
+  .map(castAs<string, PersonName>)
 
-const PersonId = pipe(
-  x.string,
-  x.size({ min: 12, max: 12 }),
-  x.map(castAs<string, PersonId>),
-)
+const PersonId = x.string
+  .size({ min: 12, max: 12 })
+  .map(castAs<string, PersonId>)
 
-const PersonAge = pipe(
-  x.integer,
-  x.min(18, 'Must be major'),
-  x.max(150, 'After it’s unlikely AND too old'),
-  x.map(castAs<number, PersonAge>),
-)
+const PersonAge = x.integer
+  .min(18, 'Must be major')
+  .max(150, 'After it’s unlikely AND too old')
+  .map(castAs<number, PersonAge>)
 
 const Person = x.object<Person>({
   id: PersonId,
