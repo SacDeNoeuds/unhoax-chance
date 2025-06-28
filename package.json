@@ -1,6 +1,6 @@
 {
   "name": "unhoax-chance",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Generate seeded Chance fixtures based on unhoax schemas",
   "main": "./lib/cjs/main.js",
   "module": "./lib/esm/main.js",
