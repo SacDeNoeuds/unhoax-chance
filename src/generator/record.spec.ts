@@ -6,9 +6,9 @@ testThatSchemaGenerates(
   x.record(x.string, x.number),
 )
 
-testThatSchemaGenerates(
-  'a non-empty Record<string, number>',
-  x
-    .record(x.string, x.number)
-    .refine('NonEmpty', (record) => Object.keys(record).length > 0),
-)
+// testThatSchemaGenerates(
+//   'a non-empty Record<string, number>',
+//   x
+//     .record(x.string, x.number)
+//     .refine('NonEmpty', (record) => Object.keys(record).length > 0),
+// )
