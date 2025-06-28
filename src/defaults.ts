@@ -16,7 +16,7 @@
 export const defaults = {
   maxArraySize: 1_000,
   maxMapSize: 1_000,
-  maxRecordSize: 1_000,
+  maxRecordSize: 200,
   maxSetSize: 1_000,
   maxDateValue: 8_640_000_000_000_000,
   minDateValue: -8_640_000_000_000_000,
