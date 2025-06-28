@@ -2,8 +2,6 @@ name: Generate Coverage Badge
 
 on:
   push:
-    branches:
-      - main
 
 jobs:
   generate-badge:
@@ -15,5 +13,6 @@ jobs:
       - run: npm run coverage # Run your Vitest tests
       - uses: jpb06/coverage-badges-action@latest
         with:
+          if: github.ref_name == 'main'
           coverage-summary-path: ./coverage/coverage-summary.json # Path to your coverage report
           badges-icon: vitest # Optional: Specify an icon
